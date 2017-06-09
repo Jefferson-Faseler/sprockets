@@ -11,6 +11,7 @@ require 'sprockets/resolve'
 require 'sprockets/transformers'
 require 'sprockets/uri_utils'
 require 'sprockets/unloaded_asset'
+require 'pry'
 
 module Sprockets
 
@@ -29,6 +30,7 @@ module Sprockets
     #
     # Returns Asset.
     def load(uri)
+      binding.pry
       unloaded = UnloadedAsset.new(uri, self)
       if unloaded.params.key?(:id)
         unless asset = asset_from_cache(unloaded.asset_key)
